@@ -1,0 +1,9 @@
+type Query {
+    findCepByNumber(cep: String): AddressResponse
+}
+
+type AddressResponse {
+    street: String
+    neighborhood: String
+    uf: String
+}

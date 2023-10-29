@@ -22,4 +22,9 @@ class ConsultaCepRest {
     fun findCepByNumber(@PathVariable cep: String) : Mono<AddressResponse> {
         return service.findCepByNumber(cep)
     }
+
+    @GetMapping(value = ["/consultas/cep/{cep}/recursivo"])
+    fun findCepByNumberRecursivo(@PathVariable cep: String) : Mono<AddressResponse> {
+        return service.findCepByNumberRecursivo(cep)
+    }
 }

@@ -23,4 +23,15 @@ class ConsultaCepService {
             }
     }
 
+    fun findCepByNumberRecursivo(cep: String): Mono<AddressResponse> {
+        return client.findCepByNumberRecursivo(cep)
+            .map {
+                AddressResponse(
+                    street = it.street,
+                    neighborhood = it.neighborhood,
+                    uf = it.uf
+                )
+            }
+    }
+
 }

@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.client.bodyToMono
 import reactor.core.publisher.Mono
 import org.slf4j.Logger
 import org.springframework.graphql.client.HttpGraphQlClient
+import java.lang.RuntimeException
 
 @Component
 class ConsultaCepClient(@Autowired private var webClient: WebClient) {
@@ -68,11 +69,7 @@ class ConsultaCepClient(@Autowired private var webClient: WebClient) {
                         neighborhood = itt.get("neighborhood").toString(),
                         uf = itt.get("uf").toString()
                     )
-                } ?: AddressData(
-                    street = "",
-                    neighborhood = "",
-                    uf = ""
-                )
+                } ?: throw RuntimeException()
             }
 
     }

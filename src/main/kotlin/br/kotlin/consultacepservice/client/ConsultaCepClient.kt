@@ -47,18 +47,8 @@ class ConsultaCepClient(@Autowired private var webClient: WebClient) {
             .url("http://localhost:8080/graphql")
             .build()
 
-        var param: String = String.format("%s", cep)
-
-        val document: String = """query FindCepByNumber {
-                findCepByNumber(cep: """" + param + """") {
-                    neighborhood
-                    uf
-                    street
-                }
-            }
-            """
-
-        return graphQlClient.document(document)
+        return graphQlClient.documentName("schema")
+            .variable("cep", cep)
             .execute()
             .map { it.getData<LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>>>() }
             .map { it?.get("findCepByNumber") }

@@ -3,5 +3,15 @@ query FindCepByNumber ($cep: String!){
         neighborhood
         uf
         street
+        list {
+            neighborhood
+            uf
+            street
+            list {
+                neighborhood
+                uf
+                street
+            }
+        }
     }
 }

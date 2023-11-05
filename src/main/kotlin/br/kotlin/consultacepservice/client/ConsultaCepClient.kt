@@ -50,17 +50,7 @@ class ConsultaCepClient(@Autowired private var webClient: WebClient) {
         return graphQlClient.documentName("schema")
             .variable("cep", cep)
             .execute()
-            .map { it.getData<LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>>>() }
-            .map { it?.get("findCepByNumber") }
-            .map {
-                it?.let { itt ->
-                    AddressData(
-                        street = itt.get("street").toString(),
-                        neighborhood = itt.get("neighborhood").toString(),
-                        uf = itt.get("uf").toString()
-                    )
-                } ?: throw RuntimeException()
-            }
-
+            .map { it.field("findCepByNumber") }
+            .map { it.toEntity(AddressData::class.java) }
     }
 }

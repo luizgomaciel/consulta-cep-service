@@ -1,6 +1,7 @@
 package br.kotlin.consultacepservice.service
 
 import br.kotlin.consultacepservice.client.ConsultaCepClient
+import br.kotlin.consultacepservice.host.dto.AddressData
 import br.kotlin.consultacepservice.host.dto.AddressResponse
 import br.kotlin.consultacepservice.repository.Cep
 import br.kotlin.consultacepservice.repository.CepRepository
@@ -22,9 +23,15 @@ class ConsultaCepService {
         return client.findCepByNumber(cep)
             .map {
                 AddressResponse(
-                    street = it.cep,
+                    street = it.logradouro,
                     neighborhood = it.bairro,
-                    uf = it.uf
+                    uf = it.uf,
+                    list = listOf(AddressData(
+                        street = it.logradouro,
+                        neighborhood = it.bairro,
+                        uf = it.uf,
+                        list = listOf()
+                    ))
                 )
             }
     }
@@ -35,7 +42,8 @@ class ConsultaCepService {
                 AddressResponse(
                     street = it.street,
                     neighborhood = it.neighborhood,
-                    uf = it.uf
+                    uf = it.uf,
+                    list = it.list
                 )
             }
     }
@@ -47,7 +55,8 @@ class ConsultaCepService {
                 AddressResponse(
                     street = it.street,
                     neighborhood = it.neighborhood,
-                    uf = it.uf
+                    uf = it.uf,
+                    list = listOf()
                 )
             }
     }

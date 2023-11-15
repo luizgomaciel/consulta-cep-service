@@ -1,4 +1,4 @@
-package br.kotlin.consultacepservice.commons
+package br.kotlin.consultacepservice.studies.enums
 
 enum class TesteEnum(text: String) {
     PRIMEIRO("primeiro"),

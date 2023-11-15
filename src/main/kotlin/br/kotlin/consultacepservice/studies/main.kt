@@ -1,4 +1,7 @@
-package br.kotlin.consultacepservice.commons
+package br.kotlin.consultacepservice.studies
+
+import br.kotlin.consultacepservice.studies.enums.TesteEnum
+import br.kotlin.consultacepservice.studies.enums.TesteEnumExtension
 
 fun main() {
     println(TesteEnumExtension().get("terceiro"))

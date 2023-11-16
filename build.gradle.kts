@@ -37,9 +37,10 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
 
-	implementation("org.springdoc:springdoc-openapi-data-rest:1.7.0")
-	implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
-	implementation("org.springdoc:springdoc-openapi-kotlin:1.7.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0")
+
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.0-rc1")
 
 	runtimeOnly("com.h2database:h2:2.2.224")
 
